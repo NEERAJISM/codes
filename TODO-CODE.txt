@@ -1,0 +1,8 @@
+1.Advance data structure complete
+2.design pattern
+3.oops concepts java
+4.python basic codable
+5.complete these
+	# leetcode
+	# geeks for geeks
+	# interview bit

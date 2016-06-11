@@ -1,0 +1,79 @@
+#include<stdio.h>
+int main()
+{
+    int s,t,a[10],b[10],r,i,smin,smax,j,c,min,max;
+    long long int n,temp,n1,n2;
+    scanf("%d",&t);
+    j=1;
+    while(j<=t)
+    {
+        scanf("%lld",&n);
+        if(n==0)
+        {
+            n1=0;
+            n2=0;
+        }
+        else
+        {
+            temp=n;
+            c=0;
+            min=10;
+            max=0;
+            while(temp>0)
+            {
+                r=temp%10;
+                min=min<r?min:r;
+                max=max>r?max:r;
+                temp=temp/10;
+                a[c]=r;
+                c++;
+            }
+            if(min==0)
+                n1=n;
+            else
+            {
+                for(i=0;i<c;i++)
+                {
+                    if(a[i]==min)
+                    {
+                        smin=i;
+                        break;
+                    }
+
+                }
+            }
+            for(i=0;i<c;i++)
+            {
+                if(a[i]==max)
+                {
+                    smax=i;
+                    break;
+                }
+            }
+                temp=a[c-1];
+            if(smax!=c-1)
+            {
+                a[c-1]=a[smax];
+                a[smax]=temp;
+            }
+                n2=0;
+            for(i=c-1;i>=0;i--)
+                n2=n2*10+a[i];
+
+            a[smax]=a[c-1];
+            a[c-1]=temp;
+            if(min!=0)
+            {
+                temp=a[c-1];
+                a[c-1]=a[smin];
+                a[smin]=temp;
+                n1=0;
+                for(i=c-1;i>=0;i--)
+                    n1=n1*10+a[i];
+            }
+        }
+        printf("Case #%d: %lld %lld\n",j,n1,n2);
+    j++;
+    }
+    return 0;
+}

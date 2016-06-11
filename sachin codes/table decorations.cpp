@@ -1,0 +1,118 @@
+#include<iostream>
+#include<stdio.h>
+using namespace std;
+long long int m(long long int x,long long int y)
+{
+	long long int z;
+	z=x<y?x:y;
+	return z;
+}
+int main()
+{
+	long long int r,g,b,min,min1,count;
+	cin>>r>>g>>b;
+	min=m(r,m(g,b));
+	r=r-min;
+	g=g-min;
+	b=b-min;
+	count=min;
+	if(r==0)
+	{
+		min=m(g,b);
+		if(min==b)
+		{
+			min1=m(g/2,b);
+			if(min1==g/2)
+			{
+				count+=min1;
+			    if(g%2==1&&(b-(g/2))>=2)
+		        count++;
+		    }
+		    else
+		    {
+		    	count+=min1;
+		    }
+		}
+		else
+	    {
+	    	min1=m(b/2,g);
+			if(min1==b/2)
+			{
+				count+=min1;
+			    if(b%2==1&&(g-(b/2))>=2)
+		        count++;
+		    }
+		    else
+		    {
+		    	count+=min1;
+		    }
+	    }
+	}
+	if(g==0)
+	{
+		min=m(r,b);
+		if(min==b)
+		{
+		    min1=m(r/2,b);
+			if(min1==g/2)
+			{
+				count+=min1;
+			    if(r%2==1&&(b-(r/2))>=2)
+		        count++;
+		    }
+		    else
+		    {
+		    	count+=min1;
+		    }
+	    }
+		else
+		{
+			min1=m(b/2,r);
+			if(min1==g/2)
+			{
+				count+=min1;
+			    if(b%2==1&&(r-(b/2))>=2)
+		        count++;
+		    }
+		    else
+		    {
+		    	count+=min1;
+		    }
+		}
+	}
+	if(b==0)
+	{
+		min=m(g,r);
+		if(min==r)
+		{
+			min1=m(g/2,r);
+			if(min1==g/2)
+			{
+				count+=min1;
+			    if(g%2==1&&(r-(g/2))>=2)
+		        count++;
+		    }
+		    else
+		    {
+		    	count+=min1;
+		    }
+		}
+		else
+		{
+			min1=m(r/2,g);
+			if(min1==g/2)
+			{
+				count+=min1;
+			    if(r%2==1&&(g-(r/2))>=2)
+		        count++;
+		    }
+		    else
+		    {
+		    	count+=min1;
+		    }
+		}
+	}
+	cout<<count;
+	return 0;
+}
+	
