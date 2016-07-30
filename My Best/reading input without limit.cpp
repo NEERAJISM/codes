@@ -11,6 +11,13 @@ int main(){
     string s;
     char c;
 
+
+    //***best for string or integers****//
+    while(scanf("%s",&s))
+    {
+
+    }
+
     while(cin >> n) // for integer
     {
         cout << n << endl;

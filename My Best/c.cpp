@@ -6,45 +6,99 @@ using namespace std;
 #define mp make_pair
 #define mod 1000000009
 
-#define fp(i,s,e) for(i=s;i<=e;i++)
-#define fm(i,s,e) for(i=s;i>=e;i--)
-
-bool comp(pair<int,string> p1, pair<int,string> p2)
-{
-    if(p1.first >= p2.first)
-        return false;
-    return true;
-}
-
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int ttt,i,j,k,m,n,d,flag,a,b;
-    string s;
+    int ttt,i,j,k,m,n,d,flag,x,y,z;
 
-    vector< vector < pair < int,string> > > v(100005);
 
-    cin>>n>>m;
-
-    fp(i,0,n-1)
+    cin>>ttt;
+    while(ttt--)
     {
-        cin>>s>>j>>d;
-        v[j].pb(mp(-d,s));
-    }
-
-    for(i=1;i<=m;i++)
-    {
+        set<int> p;
         flag = 0;
+        cin>>n>>x>>y>>z>>d;
 
-        sort(v[i].begin(),v[i].end(),comp);
+        p.insert(1);
+        p.insert(x);
+        p.insert(y);
+        p.insert(z);
 
-        if(v[i][0].first != v[i][1].first ||v[i][0].first == v[i][1].first &&  v[i][1].first != v[i][2].first)
-            cout<<v[i][0].second<<" "<<v[i][1].second<<"\n";
+        if(d%2 == 0)
+            p.insert(2);
+
+        while (d%2 == 0)
+            d = d/2;
+
+        for (int i = 3; i <= sqrt(d); i = i+2)
+        {
+            if(d%i == 0)
+                p.insert(i);
+
+            while (d%i == 0)
+                d = d/i;
+        }
+
+        if (d > 2)
+            p.insert(d);
+
+        for(i=1;i<n;i++)
+        {
+            cin>>d;
+
+            if(flag == 0)
+            {
+                if(d%2 == 0)
+                {
+                    if(p.insert(2).second)
+                    {
+                        //cout<<2<<"*\n";
+                        flag = 1;
+                    }
+                }
+
+                if(flag == 0)
+                    while (d%2 == 0)
+                        d = d/2;
+
+                if(flag == 0)
+                {
+                    for (int i = 3; i <= sqrt(d); i = i+2)
+                {
+                    if(d%i == 0)
+                        if(p.insert(i).second)
+                        {
+                            //cout<<i<<"*\n";
+                            flag = 1;
+                            break;
+                        }
+
+                    while (d%i == 0)
+                        d = d/i;
+                }
+                }
+
+                if (flag == 0 && d > 2)
+                {
+                    if(p.insert(d).second)
+                    {
+                        //cout<<d<<"*\n";
+                        flag = 1;
+                    }
+                }
+            }
+        }
+
+        if(flag == 0)
+            cout<<"She can\n";
         else
-            cout<<"?\n";
+            cout<<"She can't\n";
+
+        p.clear();
     }
+
 return 0;
 }
 

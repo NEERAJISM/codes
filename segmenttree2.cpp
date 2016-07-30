@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
-int i,j,a[100],n,b[200];
+int i,j,a[100005],n,b[10000000];
+string s;
 using namespace std;
 
 void build_seg_tree(int pos,int low,int high)
@@ -61,10 +62,13 @@ int rangequery(int pos,int low,int high,int x,int y,int val)
 
 int main()
 {
+    int z0 = (int)'0';
 
-    cin>>n;
+    cin>>s;
+    n = s.length();
+
     for(i=0;i<n;i++)
-        cin>>a[i];
+        a[i] = (int)s[i]-z0;
 
     build_seg_tree(0,0,n-1);
 

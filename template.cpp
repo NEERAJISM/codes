@@ -1,22 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define mod 1000000007
-#define endl "\n"
 #define ll long long
+#define pb push_back
+#define mp make_pair
+#define mod 1000000009
 
 #define fp(i,s,e) for(i=s;i<=e;i++)
-#define fm(i,s,e) for(i=e;i>=s;i--)
-
-#define vi vector<int>
-#define vvi vector<vector<int> >
-
-// end of template
+#define fm(i,s,e) for(i=s;i>=e;i--)
 
 int main()
 {
-	ios::sync_with_stdio(false);
-    ll int i,j,k,n,ttt;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-    return 0;
+    int ttt,i,j,k,m,n,d,flag;
+    cin>>ttt;
+
+    while(ttt--)
+    {
+
+    }
+return 0;
 }
